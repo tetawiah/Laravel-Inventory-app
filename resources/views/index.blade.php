@@ -109,14 +109,14 @@
                 <tbody class="border text-center">
                     <?php foreach ($products as $product) : ?>
                         <tr>
-                            <td><?= htmlspecialchars($product->product_name) ?></td>
-                            <td><?= htmlspecialchars($product->manufacturer_name) ?></td>
-                            <td><?= htmlspecialchars($product->price) ?></td>
-                            <td><?=htmlspecialchars($product->stock) ?></td>
-                            <td><?=htmlspecialchars($product->addedby)?></td>
-                            <td><?=htmlspecialchars($product->editedby) ?></td>
-                            <td><?= htmlspecialchars($product->created_at)?></td>
-                            <td><?= htmlspecialchars($product->updated_at) ?></td>
+                            <td><?= htmlspecialchars($product->product_name ?? '') ?></td>
+                            <td><?= htmlspecialchars($product->manufacturer->manufacturer_name ?? '') ?></td>
+                            <td><?= htmlspecialchars($product->price ?? '') ?></td>
+                            <td><?=htmlspecialchars($product->stock ?? '') ?></td>
+                            <td><?=htmlspecialchars($product->addedby ?? '')?></td>
+                            <td><?=htmlspecialchars($product->editedby ?? '') ?></td>
+                            <td><?= htmlspecialchars($product->created_at ?? '')?></td>
+                            <td><?= htmlspecialchars($product->updated_at ?? '') ?></td>
                            
                         </tr>
                     <?php endforeach; ?>

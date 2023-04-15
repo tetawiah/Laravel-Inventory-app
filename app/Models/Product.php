@@ -10,10 +10,10 @@ class Product extends Model
     use HasFactory;
 
     public function user() {
-        return $this->hasOne('\App\Models\User');
+        return $this->hasOne(User::class);
     }
 
     public function manufacturer() {
-        return $this->hasOne('\App\Models\Manufacturer');
+        return $this->hasOne(Manufacturer::class,'id');
     }
 }
