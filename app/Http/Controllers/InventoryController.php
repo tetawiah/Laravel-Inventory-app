@@ -18,6 +18,32 @@ class InventoryController extends Controller
         );
     }
 
+    public function updateView($id)
+    {
+        $product = Product::find($id);
+
+        return view(
+            'edit',
+            [
+                'product' => $product,
+                'manufacturer' => $product->manufacturer,
+                'id' => $id,
+            ]
+        );
+    }
+
+    public function update(Request $request, $id)
+    {
+        Product::find($id)->update(
+            [
+                'product_name' => $request->product,
+                'manufacturer' => $request->manufacturer,
+                'price' => $request->price,
+                'stock' => $request->stock,
+            ]
+        );
+    }
+
 
     public function store(Request $request)
     {
@@ -40,10 +66,10 @@ class InventoryController extends Controller
             'manufacturer_id' => $manufacturer->id,
             'user_id' => 1,
         ]);
-
     }
 
-    public function delete($id) {
-        Product::where('id',$id)->delete();
+    public function delete($id)
+    {
+        Product::where('id', $id)->delete();
     }
 }

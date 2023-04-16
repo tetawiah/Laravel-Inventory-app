@@ -126,9 +126,8 @@
                                 </form>
                             </td>
                             <td>
-                                <form method="GET" action="/edit">
+                                <form method="GET" action="{{ route('products.edit.view',['id' => $product->id]) }}">
                                     <button type="submit" class="bg-gray-500 hover:bg-gray-800 hover:text-white text-sm "> Edit </button>
-                                    <input type="hidden" name='id' value=<?= $product->id ?>>
                                 </form>
                             </td>
                         </tr>

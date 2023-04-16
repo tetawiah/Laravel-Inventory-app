@@ -15,32 +15,33 @@
     <main>
 
         <div class="flex items-center justify-center w-1/4 mt-9 w-full">
-                 <form class="border p-5" action="/update" method="post">
+            <form class="border p-5" action="{{route('products.update',['id'=> $product->id])}}" method="post">
                 <div class="ml-2 mt-4 mb-2">
                     <label class="inline">Product</label>
-                    <input class="border-gray-400 w-full" type="text" name="product" value="<?php echo $product['product_name'] ?>" />
+                    <input class="border-gray-400 w-full" type="text" name="product" value="{{$product->product_name}}" />
                 </div>
                 <div class="ml-2 mt-4 mb-2">
                     <label class="inline">Manufacturer</label>
-                    <input class="border-gray-400 w-full" type="text" name="manufacturer" value="<?php echo $manufacturer['manufacturer_name'] ?>" />
+                    <input class="border-gray-400 w-full" type="text" name="manufacturer" value="{{$manufacturer->manufacturer_name }}" />
                 </div>
                 <div class="ml-2 mt-4 mb-2">
                     <label class="inline">Price</label>
-                    <input class="border-gray-400 w-full" type="text" name="price" value="<?php echo $product['price'] ?>" />
+                    <input class="border-gray-400 w-full" type="text" name="price" value="{{$product->price }}" />
                 </div>
                 <div class="ml-2 mt-4 mb-2">
                     <label class="inline">Stock</label>
-                    <input class="border-gray-400 w-full" type="text" name="stock" value="<?php echo $product['stock'] ?>" />
+                    <input class="border-gray-400 w-full" type="text" name="stock" value="{{$product->stock }}" />
                 </div>
 
 
 
                 <div>
-                    <button class="border bg-gray-800 text-white p-2 rounded-md mt-4 " name="update" type="submit">Update</button>
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button class="border bg-gray-800 text-white p-2 rounded-md mt-4 " type="submit">Update</button>
                 </div>
-                <input type="hidden" name="_method" value="PATCH"> </input>
-                <input type="hidden" name="id" value="<?= $id ?>">
-                <input type="hidden" name="editedby" value="<?= $log['email'] ?>">
+                <input type="hidden" name="_method" value="PUT"> </input>
+                <input type="hidden" name="id" value="{{ $id }}">
+                <!-- <input type="hidden" name="editedby" > -->
             </form>
         </div>
 

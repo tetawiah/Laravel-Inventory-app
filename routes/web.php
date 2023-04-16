@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\InventoryController;
 
 /*
@@ -20,3 +19,7 @@ Route::get('/', [InventoryController::class,'index' ]);
 Route::post('/create',[InventoryController::class,'store'])->name('products.create'); 
 
 Route::delete('/product/{id}',[InventoryController::class,'delete'])->name('products.delete');
+
+Route::get('/edit/{id}',[InventoryController::class,'updateView'])->name('products.edit.view');
+
+Route::put('/update{id}',[InventoryController::class,'update'])->name('products.update');
