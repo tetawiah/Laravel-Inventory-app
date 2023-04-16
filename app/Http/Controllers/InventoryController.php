@@ -52,7 +52,7 @@ class InventoryController extends Controller
     public function store(Request $request)
     {
         // User::create([
-        //     'name' => 'Dummy Email',
+        //     'name' => 'Test User',
         //     'email' => 'example@example.com',
         //     'password' => bcrypt('password'),
 
@@ -68,7 +68,7 @@ class InventoryController extends Controller
             'price' => $request->price,
             'stock' => $request->stock,
             'manufacturer_id' => $manufacturer->id,
-            'user_id' => 1,
+            'user_id' => Auth::id(),
         ]);
 
         return $this->redirectHome();
