@@ -15,6 +15,7 @@ class Product extends Model
         'stock',
         'manufacturer_id',
         'user_id',
+        'editedby'
     ];
 
     public function user() {

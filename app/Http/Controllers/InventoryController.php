@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Manufacturer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InventoryController extends Controller
 {
@@ -40,6 +41,7 @@ class InventoryController extends Controller
                 'manufacturer' => $request->manufacturer,
                 'price' => $request->price,
                 'stock' => $request->stock,
+                'editedby' => Auth::user()->email,
             ]
         );
 
@@ -78,8 +80,8 @@ class InventoryController extends Controller
         return $this->redirectHome();
     }
 
-    private function redirectHome() {
+    private function redirectHome()
+    {
         return redirect('/');
     }
-
 }
