@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,15 +23,3 @@ Route::delete('/product/{id}',[InventoryController::class,'delete'])->name('prod
 Route::get('/edit/{id}',[InventoryController::class,'updateView'])->name('products.edit.view');
 
 Route::put('/update{id}',[InventoryController::class,'update'])->name('products.update');
-
-Route::view('/login','login');
-
-Route::post('/login', [LoginController::class,'authenticate'])->name('login');
-
-// Route::middleware(['auth'])->group(function () {
-//     // ...
-// });
-
-// Route::middleware(['guest'])->group(function () {
-//     // ...
-// });
