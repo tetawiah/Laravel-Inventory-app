@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('product_name');
             $table->string('price');
             $table->string('stock');
-            $table->string('editedby');
+            $table->string('editedby')->nullable();
             $table->foreignId('manufacturer_id')->references('id')->on('manufacturers');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();

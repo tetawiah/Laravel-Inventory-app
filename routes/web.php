@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\InventoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +15,6 @@ use App\Http\Controllers\HomepageController;
 |
 */
 
-Route::get('/', [HomepageController::class,'viewAll' ]);
+Route::get('/', [InventoryController::class,'index' ]);
+
+Route::post('/create',[InventoryController::class,'store']); 

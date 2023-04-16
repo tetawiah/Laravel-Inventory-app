@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -30,7 +31,7 @@
                 <form class="border p-5" action="/create" method="post">
                     <div class="ml-2 mt-4 mb-2">
                         <label class="inline">Product</label>
-                        <input class="border-gray-400 w-full" type="text" name="product" />
+                        <input class="border-gray-400 w-full" type="text" name="name" />
                     </div>
                     <div class="ml-2 mt-4 mb-2">
                         <label class="inline">Manufacturer</label>
@@ -47,8 +48,8 @@
 
 
                     <div>
-
-                        <div><button class="border bg-gray-800 text-white p-2 rounded-md mt-4 " name="save" type="submit">Submit Form</button></div>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                        <div><button class="border bg-gray-800 text-white p-2 rounded-md mt-4 " type="submit">Submit Form</button></div>
 
                     </div>
                 </form>
@@ -85,7 +86,6 @@
 
         <div class="m-2">
             <form action="/search" method="post">
-                
                 <input type="search" class="border p-2 w-1/4 bg-gray-100" name="search"> </input>
                 <button class="border bg-gray-800 text-white p-2 rounded-md mt-4 " type="submit">Search</button>
         </div>
@@ -112,12 +112,12 @@
                             <td><?= htmlspecialchars($product->product_name ?? '') ?></td>
                             <td><?= htmlspecialchars($product->manufacturer->manufacturer_name ?? '') ?></td>
                             <td><?= htmlspecialchars($product->price ?? '') ?></td>
-                            <td><?=htmlspecialchars($product->stock ?? '') ?></td>
-                            <td><?=htmlspecialchars($product->addedby ?? '')?></td>
-                            <td><?=htmlspecialchars($product->editedby ?? '') ?></td>
-                            <td><?= htmlspecialchars($product->created_at ?? '')?></td>
+                            <td><?= htmlspecialchars($product->stock ?? '') ?></td>
+                            <td><?= htmlspecialchars($product->user->name ?? '') ?></td>
+                            <td><?= htmlspecialchars($product->editedby ?? '') ?></td>
+                            <td><?= htmlspecialchars($product->created_at ?? '') ?></td>
                             <td><?= htmlspecialchars($product->updated_at ?? '') ?></td>
-                           
+
                         </tr>
                     <?php endforeach; ?>
 
