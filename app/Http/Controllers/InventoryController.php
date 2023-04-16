@@ -42,4 +42,8 @@ class InventoryController extends Controller
         ]);
 
     }
+
+    public function delete($id) {
+        Product::where('id',$id)->delete();
+    }
 }

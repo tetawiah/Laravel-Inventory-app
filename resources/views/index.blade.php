@@ -28,7 +28,7 @@
 
         <div class="flex justify-evenly mt-9 w-full">
             <div>
-                <form class="border p-5" action="/create" method="post">
+                <form class="border p-5" action=" {{ route('products.create') }} " method="post">
                     <div class="ml-2 mt-4 mb-2">
                         <label class="inline">Product</label>
                         <input class="border-gray-400 w-full" type="text" name="name" />
@@ -58,7 +58,7 @@
 
 
             <div>
-                <form class="border p-5" action="/seach" method="get">
+                <form class="border p-5" action="/search" method="get">
                     <div class="ml-2 mt-4 mb-2">
                         <label class="inline">Product</label>
                         <input class="border-gray-400 w-full" type="text" name="product" />
@@ -74,7 +74,7 @@
                     </div>
 
 
-                    <div><button class="border bg-gray-800 text-white p-2 rounded-md mt-4 " name="serch" type="submit">Search</button></div>
+                    <div><button class="border bg-gray-800 text-white p-2 rounded-md mt-4 " name="search" type="submit">Search</button></div>
 
 
                 </form>
@@ -88,6 +88,7 @@
             <form action="/search" method="post">
                 <input type="search" class="border p-2 w-1/4 bg-gray-100" name="search"> </input>
                 <button class="border bg-gray-800 text-white p-2 rounded-md mt-4 " type="submit">Search</button>
+            </form>
         </div>
 
 
@@ -117,7 +118,19 @@
                             <td><?= htmlspecialchars($product->editedby ?? '') ?></td>
                             <td><?= htmlspecialchars($product->created_at ?? '') ?></td>
                             <td><?= htmlspecialchars($product->updated_at ?? '') ?></td>
-
+                            <td>
+                                <form method="POST" action="{{ route('products.delete', ['id' => $product->id]) }}">
+                                    <button type="submit" class="bg-gray-200 hover:bg-gray-800 hover:text-white text-sm "> Remove </button>
+                                    <input type="hidden" name='_method' value="DELETE"> </input>
+                                    <input type="hidden" name='_token' value=" {{ csrf_token() }}"> </input>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="GET" action="/edit">
+                                    <button type="submit" class="bg-gray-500 hover:bg-gray-800 hover:text-white text-sm "> Edit </button>
+                                    <input type="hidden" name='id' value=<?= $product->id ?>>
+                                </form>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
 

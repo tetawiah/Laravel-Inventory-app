@@ -17,4 +17,6 @@ use App\Http\Controllers\InventoryController;
 
 Route::get('/', [InventoryController::class,'index' ]);
 
-Route::post('/create',[InventoryController::class,'store']); 
+Route::post('/create',[InventoryController::class,'store'])->name('products.create'); 
+
+Route::delete('/product/{id}',[InventoryController::class,'delete'])->name('products.delete');
