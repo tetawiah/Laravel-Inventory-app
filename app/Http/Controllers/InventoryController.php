@@ -42,6 +42,8 @@ class InventoryController extends Controller
                 'stock' => $request->stock,
             ]
         );
+
+        return $this->redirectHome();
     }
 
 
@@ -66,10 +68,18 @@ class InventoryController extends Controller
             'manufacturer_id' => $manufacturer->id,
             'user_id' => 1,
         ]);
+
+        return $this->redirectHome();
     }
 
     public function delete($id)
     {
         Product::where('id', $id)->delete();
+        return $this->redirectHome();
     }
+
+    private function redirectHome() {
+        return redirect('/');
+    }
+
 }
