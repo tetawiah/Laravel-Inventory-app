@@ -16,7 +16,6 @@
 
         <div class="flex flex-col items-center w-1/4 mt-9 w-full">
             <form class="border p-5" action="{{route('login')}}" method="post">
-
                 <div class="ml-2 mt-4 mb-2">
                     <label class="inline">E-mail</label>
                     <input class="border-gray-400 w-full" type="text" name="email" />

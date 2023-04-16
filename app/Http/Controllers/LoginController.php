@@ -15,11 +15,12 @@ class LoginController extends Controller
         ]);
 
       
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
- 
-            return redirect()->intended('/');
+        if (!Auth::attempt($credentials)) {
+           echo "<h1> Sorry couldn't log you in </h1>";
         }
+        $request->session()->regenerate();
+ 
+        return redirect()->intended('/');
     }
 
    

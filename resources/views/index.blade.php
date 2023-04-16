@@ -18,7 +18,10 @@
                 <h2 class="text-2xl font-bold">Inventory</h2>
             </div>
             <div class="w-full flex justify-end">
-                <a href=/logout class=" font-bold">Log out</a>
+                <form action = "logout" method = "POST">
+                    <input type = "hidden" name = "_token" value="{{csrf_token()}}" > </input>
+                <button class=" font-bold">Log out</button>
+                </form>
             </div>
         </div>
 
